@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: rootroot
+      POSTGRES_DB: mydatabase
+    ports:
+      - "5432:5432"
+    networks:
+      - my-network
+
+  auth-service:
+    build:
+      context: ./auth-service
+    ports:
+      - "5000:5000"
+    environment:
+      DATABASE_URL: postgres://myuser:mypassword@postgres:5432/mydatabase
+    depends_on:
+      - postgres
+    networks:
+      - my-network
+
+  meetup-service:
+    build:
+      context: ./meetup-service
+    ports:
+      - "5001:5001"
+    environment:
+      DATABASE_URL: postgres://myuser:mypassword@postgres:5432/mydatabase
+    depends_on:
+      - postgres
+      - auth-service
+    networks:
+      - my-network
+
+networks:
+  my-network:
+    driver: bridge
