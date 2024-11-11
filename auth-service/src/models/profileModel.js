@@ -10,7 +10,7 @@ const Profile = sequelize.define('Profile', {
     bio: { type: DataTypes.TEXT },
     createdAt: { type: DataTypes.DATE, defaultValue: DataTypes.NOW },
     updatedAt: { type: DataTypes.DATE, defaultValue: DataTypes.NOW }
-});
+},{    tableName: 'profiles' });
 
 // Связываем Profile с User (1 к 1)
 Profile.belongsTo(User, { foreignKey: 'userId', onDelete: 'CASCADE' });

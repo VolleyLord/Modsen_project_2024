@@ -1,6 +1,6 @@
-const sequelize = require('./config/database');
-const User = require('./models/userModel');
-const Profile = require('./models/profileModel');
+const sequelize = require('./src/config/database');
+const User = require('./src/models/userModel');
+const Profile = require('./src/models/profileModel');
 
 async function initDatabase() {
     try {
