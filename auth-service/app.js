@@ -2,7 +2,7 @@ require('dotenv').config(); // Подключаем переменные из .e
 const express = require('express');
 const sequelize = require('./src/config/database');
 const initDatabase = require('./initDatabase');
-const authRoutes = require('./src/routes/authRoutes'); // Подключаем ваши маршруты
+const authRoutes = require('./src/routes/authRoutes'); // Подключаем маршруты
 
 const app = express();
 const PORT = process.env.PORT || 5000;

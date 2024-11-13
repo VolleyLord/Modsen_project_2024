@@ -1,4 +1,5 @@
-const express = require('express');
+import {express} from 'express';
+
 const router = express.Router();
 const authController = require('../controllers/authController');
 const validateToken = require('../middleware/authMiddleware');
@@ -12,4 +13,4 @@ router.post('/login', authController.loginUser);
 // Обновление профиля
 router.put('/profile', validateToken, authController.updateProfile);
 
-module.exports = router;
+export default router;

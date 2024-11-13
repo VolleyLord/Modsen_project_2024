@@ -1,5 +1,6 @@
-const Meetup = require('../models/meetupModel');
-const MeetupAttendee = require('../models/meetupAttendeeModel');
+import MeetupAttendee from '../models/meetupAttendeeModel.js';
+import Meetup from '../models/meetupModel.js';
+
 
 async function createMeetup(data) {
     return await Meetup.create(data);
@@ -13,17 +14,16 @@ async function registerAttendee(meetupId, userId) {
     return await MeetupAttendee.create({ meetupId, userId, status: 'registered' });
 }
 
-async function updateAttendeeStatus(meetupId, userId, status) {
-    const attendee = await MeetupAttendee.findOne({
-        where: { meetupId, userId },
-    });
-    if (attendee) {
-        attendee.status = status;
-        await attendee.save();
-        return attendee;
+
+export const updateAttendeeStatus = async (meetupId, userId, status) => {
+    const attendee = await MeetupAttendee.findOne({ where: { meetupId, userId } });
+    if (!attendee) {
+        throw new Error(`No attendee found for meetup ${meetupId} and user ${userId}`);
     }
-    return null;
-}
+    attendee.status = status;
+    await attendee.save();
+    return attendee;
+};
 
 module.exports = {
     createMeetup,

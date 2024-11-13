@@ -1,5 +1,5 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('../config/database');
+import {DataTypes } from'sequelize';
+import { sequelize } from '../config/database';
 
 const Meetup = sequelize.define('Meetup', {
     id: { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
@@ -12,5 +12,4 @@ const Meetup = sequelize.define('Meetup', {
     createdAt: { type: DataTypes.DATE, defaultValue: DataTypes.NOW },
     updatedAt: { type: DataTypes.DATE, defaultValue: DataTypes.NOW }
 });
-
-module.exports = Meetup;
+export default Meetup;

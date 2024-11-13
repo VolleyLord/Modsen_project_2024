@@ -1,7 +1,8 @@
-const jwt = require('jsonwebtoken');
+import {jwt} from 'jsonwebtoken';
 const { JWT_SECRET } = process.env;
 
-module.exports = (req, res, next) => {
+
+export default (req, res, next) => {
     const token = req.headers['authorization'];
     if (!token) return res.status(403).json({ message: 'Token required' });
     

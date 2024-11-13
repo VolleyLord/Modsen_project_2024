@@ -21,6 +21,7 @@
       "nodemon": "^2.0.15"
     },
     "author": "Artem",
-    "license": "MIT"
+    "license": "MIT",
+    "type": "module"
   }
   

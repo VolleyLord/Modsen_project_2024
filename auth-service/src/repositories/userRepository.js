@@ -1,14 +1,14 @@
-const User = require('../models/userModel');
+import User from '../models/userModel.js';
 
-exports.createUser = async (userData) => {
+export const createUser = async (userData) => {
     return await User.create(userData);
 };
 
-exports.findUserByEmail = async (email) => {
+export const findUserByEmail = async (email) => {
     return await User.findOne({ where: { email } });
 };
 
-exports.updateUser = async (userId, updatedData) => {
+export const updateUser = async (userId, updatedData) => {
     await User.update(updatedData, { where: { id: userId } });
     return await User.findByPk(userId);
 };

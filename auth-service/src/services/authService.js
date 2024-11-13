@@ -1,22 +1,23 @@
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-const userRepository = require('../repositories/userRepository');
-const { JWT_SECRET } = process.env;
+import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
+import * as userRepository from '../repositories/userRepository.js';
 
-exports.registerUser = async (userData) => {
-    const hashedPassword = await bcrypt.hash(userData.password, 10);
+const { JWT_SECRET, SALT_ROUNDS, SESSION_EXPIRY } = process.env;
+
+export const registerUser = async (userData) => {
+    const hashedPassword = await bcrypt.hash(userData.password, parseInt(SALT_ROUNDS));
     const user = await userRepository.createUser({ ...userData, password: hashedPassword });
     return { id: user.id, email: user.email };
 };
 
-exports.loginUser = async ({ email, password }) => {
+export const loginUser = async ({ email, password }) => {
     const user = await userRepository.findUserByEmail(email);
     if (!user || !(await bcrypt.compare(password, user.password))) {
         throw new Error('Invalid credentials');
     }
-    return jwt.sign({ id: user.id, email: user.email }, JWT_SECRET, { expiresIn: '1h' });
+    return jwt.sign({ id: user.id, email: user.email }, JWT_SECRET, { expiresIn: SESSION_EXPIRY });
 };
 
-exports.updateProfile = async (userId, newProfileData) => {
+export const updateProfile = async (userId, newProfileData) => {
     return await userRepository.updateUser(userId, newProfileData);
 };
