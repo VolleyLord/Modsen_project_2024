@@ -1,6 +1,5 @@
-const sequelize = require('./src/config/database');
-const User = require('./src/models/userModel');
-const Profile = require('./src/models/profileModel');
+import sequelize from './src/config/database.js';
+import User from './src/models/userModel.js';
 
 async function initDatabase() {
     try {
@@ -11,4 +10,4 @@ async function initDatabase() {
     }
 }
 
-module.exports = initDatabase;
+export default initDatabase;

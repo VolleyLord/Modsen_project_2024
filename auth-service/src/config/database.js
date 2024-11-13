@@ -15,4 +15,4 @@ const sequelize = new Sequelize(process.env.DATABASE_URL, {
     }
 })();
 
-export {sequelize}
+export default sequelize;

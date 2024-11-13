@@ -1,8 +1,8 @@
-import {express} from 'express';
+import express from 'express';  // импортируем express как default export
 
 const router = express.Router();
-const authController = require('../controllers/authController');
-const validateToken = require('../middleware/authMiddleware');
+import authController from '../controllers/authController.js';
+import validateToken from '../middleware/authMiddleware.js';
 
 // Регистрация
 router.post('/register', authController.registerUser);

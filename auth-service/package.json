@@ -4,24 +4,24 @@
     "description": "Authorization microservice for the application",
     "main": "app.js",
     "scripts": {
-      "start": "node app.js",
-      "dev": "nodemon app.js"
+        "start": "node app.js",
+        "dev": "nodemon app.js"
     },
     "dependencies": {
-      "express": "^4.18.2",
-      "sequelize": "^6.28.0",
-      "pg": "^8.7.3",
-      "pg-hstore": "^2.3.4",
-      "jsonwebtoken": "^8.5.1",
-      "bcryptjs": "^2.4.3",
-      "dotenv": "^16.0.1",
-      "joi": "^17.6.0"
+        "bcryptjs": "^2.4.3",
+        "cookie-parser": "^1.4.7",
+        "dotenv": "^16.0.1",
+        "express": "^4.18.2",
+        "joi": "^17.6.0",
+        "jsonwebtoken": "^8.5.1",
+        "pg": "^8.7.3",
+        "pg-hstore": "^2.3.4",
+        "sequelize": "^6.28.0"
     },
     "devDependencies": {
-      "nodemon": "^2.0.15"
+        "nodemon": "^2.0.15"
     },
     "author": "Artem",
     "license": "MIT",
     "type": "module"
-  }
-  
+}
