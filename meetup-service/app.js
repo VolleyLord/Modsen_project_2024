@@ -1,7 +1,7 @@
 import 'dotenv/config';           // Подключаем переменные из .env
 import express from 'express';
-import sequelize from 'src/config/database.js';
-import meetupRoutes from 'src/routes/meetupRoutes.js';  // Подключаем маршруты
+import sequelize from './src/config/database.js';
+import meetupRoutes from './src/routes/meetupRoutes.js';  // Подключаем маршруты
 import cookieParser from 'cookie-parser';
 
 const app = express();
